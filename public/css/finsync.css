@@ -109,60 +109,96 @@ body {
 .text-success { color: var(--fs-success); }
 .text-danger { color: var(--fs-danger); }
 
+/* Layout Wrapper */
+.fs-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
 /* Sidebar */
-#sidebar {
+.fs-sidebar {
   background-color: var(--fs-secondary);
   color: #fff;
-  min-height: 100vh;
   width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
+  height: 100vh;
+  overflow-y: auto;
   z-index: 1030;
   transition: all 0.3s;
 }
-#sidebar .sidebar-header {
-  padding: 1.25rem;
+
+.fs-sidebar-brand {
+  padding: 1.5rem;
   border-bottom: 1px solid var(--fs-secondary-light);
   font-weight: 800;
   font-size: var(--fs-text-xl);
+  display: flex;
+  align-items: center;
 }
-#sidebar .nav-link {
-  color: rgba(255,255,255,0.8);
-  padding: 0.75rem 1.25rem;
+
+.fs-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.fs-sidebar-heading {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.4);
+  font-weight: var(--fs-weight-bold);
+}
+
+.fs-sidebar-item {
+  color: rgba(255,255,255,0.7);
+  padding: 0.75rem 1.5rem;
   font-weight: var(--fs-weight-medium);
+  text-decoration: none;
   border-left: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
 }
-#sidebar .nav-link:hover {
+
+.fs-sidebar-item:hover {
   background-color: var(--fs-secondary-light);
   color: #fff;
 }
-#sidebar .nav-link.active {
+
+.fs-sidebar-item.active {
   background-color: var(--fs-primary);
   color: #fff;
-  border-left-color: var(--fs-primary-light);
-}
-#sidebar i {
-  width: 24px;
-  text-align: center;
-  margin-right: 8px;
+  border-left-color: var(--fs-primary-soft);
 }
 
-#content-wrapper {
+.fs-sidebar-item i {
+  width: 24px;
+  text-align: center;
+  margin-right: 12px;
+  font-size: 1.1rem;
+}
+
+/* Main Content */
+.fs-main-content {
+  flex-grow: 1;
   margin-left: 260px;
+  padding: 1.5rem 2rem;
+  background-color: var(--fs-bg-body);
   min-height: 100vh;
   transition: all 0.3s;
 }
 
 /* Topbar */
-.topbar {
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  height: 60px;
-  padding: 0 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.fs-topbar {
+  background-color: transparent;
+  padding: 0 0 1.5rem 0;
 }
 
 /* Tables */
