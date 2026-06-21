@@ -17,7 +17,7 @@
     
     <div class="row mb-4">
         <div class="col-12 col-xl-8">
-            <div class="card border-0 shadow-sm" style="border-radius: 14px;">
+            <div class="card">
                 <div class="card-body p-4">
                     <div class="row g-3">
                         <div class="col-md-4">
@@ -50,7 +50,7 @@
         </div>
         
         <div class="col-12 col-xl-4 mt-4 mt-xl-0">
-            <div class="card border-0 shadow-sm h-100" style="border-radius: 14px; background: var(--fs-secondary); color: white;">
+            <div class="card h-100" style="border-radius: 14px; background: var(--fs-secondary); color: white;">
                 <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
                     <h6 class="text-white-50 fw-bold text-uppercase mb-1" style="letter-spacing: 1px;">Status Jurnal</h6>
                     <div id="balanceStatus">
@@ -64,7 +64,7 @@
     </div>
 
     <!-- Journal Lines -->
-    <div class="card border-0 shadow-sm" style="border-radius: 14px;">
+    <div class="card">
         <div class="card-header bg-white border-bottom-0 pt-4 pb-0 d-flex justify-content-between align-items-center">
             <h5 class="fw-bold mb-0">Rincian Jurnal</h5>
             <button type="button" class="btn btn-sm btn-outline-secondary" id="addRowBtn"><i class="fa-solid fa-plus"></i> Tambah Baris</button>

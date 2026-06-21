@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-12 col-md-8">
-        <div class="card border-0 shadow-sm" style="border-radius: 14px;">
+        <div class="card">
             <div class="card-body p-4">
                 <h6 class="fw-bold mb-4 border-bottom pb-2">Detail Invoice #{{ $invoice->invoice_number }}</h6>
                 <table class="table table-borderless table-sm mb-4">

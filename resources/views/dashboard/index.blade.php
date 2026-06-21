@@ -51,7 +51,7 @@
 
 <div class="row g-4">
     <div class="col-12 col-lg-8">
-        <div class="card border-0 shadow-sm" style="border-radius: 14px;">
+        <div class="card">
             <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
                 <h5 class="fw-bold mb-0">Arus Kas (Kasaran)</h5>
             </div>
@@ -62,7 +62,7 @@
     </div>
     
     <div class="col-12 col-lg-4">
-        <div class="card border-0 shadow-sm h-100" style="border-radius: 14px;">
+        <div class="card h-100">
             <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
                 <h5 class="fw-bold mb-0">Invoice Jatuh Tempo</h5>
             </div>

@@ -21,19 +21,23 @@
         }
         .login-card {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             background: var(--fs-bg-card);
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(13,115,119,0.08);
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
             border: 1px solid var(--fs-border);
         }
         .brand-logo {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--fs-secondary);
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
         }
     </style>
 </head>
@@ -41,13 +45,12 @@
 
 <div class="login-card">
     <div class="brand-logo">
-        <i class="fa-solid fa-chart-line text-success"></i> FINSYNC
+        FINSYNC
     </div>
-    <h4 class="fw-bold mb-1 text-center">Selamat Datang</h4>
-    <p class="text-muted text-center mb-4" style="font-size: var(--fs-text-sm);">Masuk ke sistem ERP Keuangan</p>
+    <p class="text-muted text-center mb-5" style="font-size: 0.85rem;">Masuk ke sistem ERP Keuangan</p>
 
     @if ($errors->any())
-        <div class="alert alert-danger" style="font-size: var(--fs-text-sm); border-radius: 8px;">
+        <div class="alert alert-danger" style="font-size: var(--fs-text-sm); border-radius: 8px; border: none; background-color: var(--fs-danger-bg); color: var(--fs-danger);">
             <ul class="mb-0 ps-3">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -58,17 +61,17 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="form-floating mb-3">
-            <input type="email" name="email" class="form-control" id="emailInput" placeholder="name@example.com" value="{{ old('email') }}" required autofocus>
-            <label for="emailInput">Alamat Email</label>
+        <div class="mb-4">
+            <label class="form-label fw-bold" style="font-size: 0.85rem;">Alamat Email</label>
+            <input type="email" name="email" class="form-control" placeholder="name@example.com" value="{{ old('email') }}" required autofocus>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Password" required>
-            <label for="passwordInput">Password</label>
+        <div class="mb-4">
+            <label class="form-label fw-bold" style="font-size: 0.85rem;">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="••••••••" required>
         </div>
         <div class="form-check mb-4">
             <input class="form-check-input" type="checkbox" name="remember" id="rememberCheck">
-            <label class="form-check-label text-muted" for="rememberCheck" style="font-size: var(--fs-text-sm);">
+            <label class="form-check-label text-muted" for="rememberCheck" style="font-size: 0.85rem;">
                 Ingat Saya
             </label>
         </div>

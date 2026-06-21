@@ -18,7 +18,7 @@
 </script>
 @endif
 
-<div class="card border-0 shadow-sm" style="border-radius: 14px;">
+<div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-fs mb-0">

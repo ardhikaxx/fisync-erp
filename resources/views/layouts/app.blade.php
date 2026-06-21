@@ -23,7 +23,7 @@
 
 <div class="fs-wrapper">
     <!-- Sidebar -->
-    <aside class="fs-sidebar shadow-sm">
+    <aside class="fs-sidebar">
         <div class="fs-sidebar-brand">
             <i class="fa-solid fa-chart-line text-success"></i> FINSYNC <span class="fs-badge fs-badge-success ms-2" style="font-size:0.6rem;">PRO</span>
         </div>
@@ -81,7 +81,7 @@
                 <p class="text-muted mb-0" style="font-size: 0.85rem;">Selamat datang kembali, kelola data Anda dengan mudah.</p>
             </div>
             <div class="d-flex align-items-center gap-4">
-                <button class="btn btn-light rounded-circle shadow-sm" style="width: 42px; height: 42px; position: relative; border: none;">
+                <button class="btn btn-light rounded-circle" style="width: 42px; height: 42px; position: relative; border: none;">
                     <i class="fa-solid fa-bell text-secondary"></i>
                     <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
                 </button>
