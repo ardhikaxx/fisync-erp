@@ -143,5 +143,6 @@ class DatabaseSeeder extends Seeder
         Bank::firstOrCreate(['code' => 'BSI', 'name' => 'Bank Syariah Indonesia']);
 
         $this->call(ContactSeeder::class);
+        $this->call(DummyDataSeeder::class);
     }
 }
