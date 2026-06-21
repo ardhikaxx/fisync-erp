@@ -38,8 +38,8 @@
                         <td style="padding-left: 1.5rem;" class="font-mono fw-bold">{{ $asset->asset_code }}</td>
                         <td class="fw-bold">{{ $asset->asset_name }}</td>
                         <td>{{ \Carbon\Carbon::parse($asset->acquisition_date)->format('d/m/Y') }}</td>
-                        <td class="text-end font-mono">Rp {{ number_format($asset->acquisition_cost, 0, ',', '.') }}</td>
-                        <td class="text-center">{{ $asset->useful_life_years }}</td>
+                        <td class="text-end font-mono">Rp {{ number_format($asset->cost_basis, 0, ',', '.') }}</td>
+                        <td class="text-center">{{ $asset->useful_life_months / 12 }}</td>
                         <td class="text-center" style="padding-right: 1.5rem;">
                             @if($asset->status == 'active')
                                 <span class="fs-badge fs-badge-success">Aktif</span>

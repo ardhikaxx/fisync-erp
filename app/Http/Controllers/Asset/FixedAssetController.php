@@ -45,9 +45,18 @@ class FixedAssetController extends Controller
         ]);
 
         $asset = new FixedAsset();
-        $asset->fill($request->all());
+        $asset->asset_code = $request->asset_code;
+        $asset->asset_name = $request->asset_name;
+        $asset->category = 'General'; // Default category
+        $asset->acquisition_date = $request->acquisition_date;
+        $asset->cost_basis = $request->acquisition_cost;
+        $asset->salvage_value = $request->salvage_value;
+        $asset->useful_life_months = $request->useful_life_years * 12;
+        $asset->asset_account_id = $request->asset_account_id;
+        $asset->accum_depreciation_account_id = $request->accumulated_depreciation_account_id;
+        $asset->expense_account_id = $request->depreciation_expense_account_id;
+        $asset->branch_id = $request->branch_id;
         $asset->status = 'active';
-        $asset->created_by = Auth::id();
         $asset->save();
 
         return redirect()->route('assets.index')->with('success', 'Data Aset Tetap berhasil disimpan.');
