@@ -14,7 +14,7 @@ class BudgetController extends Controller
 {
     public function index()
     {
-        $budgets = Budget::with(['fiscalYear', 'account', 'costCenter'])
+        $budgets = Budget::with(['account', 'costCenter'])
             ->orderBy('id', 'desc')
             ->paginate(15);
         return view('budget.index', compact('budgets'));
@@ -38,16 +38,15 @@ class BudgetController extends Controller
             'annual_budget' => 'required|numeric|min:0',
         ]);
 
+        $fy = FiscalYear::find($request->fiscal_year_id);
+
         $budget = new Budget();
-        $budget->fill($request->all());
+        $budget->fiscal_year = $fy->year;
+        $budget->period_type = 'annual';
+        $budget->account_id = $request->account_id;
+        $budget->cost_center_id = $request->cost_center_id;
+        $budget->budgeted_amount = $request->annual_budget;
         
-        // Auto-distribute evenly to months for simplicity
-        $monthly = $request->annual_budget / 12;
-        for ($i=1; $i<=12; $i++) {
-            $budget->{"month_{$i}_budget"} = $monthly;
-        }
-        
-        $budget->created_by = Auth::id();
         $budget->save();
 
         return redirect()->route('budgets.index')->with('success', 'Anggaran berhasil dibuat.');

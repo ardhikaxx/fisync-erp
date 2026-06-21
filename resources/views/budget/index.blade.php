@@ -33,10 +33,10 @@
                 <tbody>
                     @forelse($budgets as $budget)
                     <tr>
-                        <td style="padding-left: 1.5rem;" class="fw-bold">{{ $budget->fiscalYear->year }}</td>
+                        <td style="padding-left: 1.5rem;" class="fw-bold">{{ $budget->fiscal_year }}</td>
                         <td>{{ $budget->account->account_name }}</td>
                         <td>{{ $budget->costCenter->name }}</td>
-                        <td class="text-end font-mono text-primary fw-bold" style="padding-right: 1.5rem;">Rp {{ number_format($budget->annual_budget, 0, ',', '.') }}</td>
+                        <td class="text-end font-mono text-primary fw-bold" style="padding-right: 1.5rem;">Rp {{ number_format($budget->budgeted_amount, 0, ',', '.') }}</td>
                     </tr>
                     @empty
                     <tr>
