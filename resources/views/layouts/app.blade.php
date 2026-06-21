@@ -77,19 +77,20 @@
         <!-- Topbar -->
         <nav class="fs-topbar d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h4 class="fw-bold mb-0">@yield('title')</h4>
+                <h4 class="fw-bold mb-1 text-dark">@yield('title')</h4>
+                <p class="text-muted mb-0" style="font-size: 0.85rem;">Selamat datang kembali, kelola data Anda dengan mudah.</p>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <button class="btn btn-light position-relative rounded-circle" style="width: 40px; height: 40px;">
-                    <i class="fa-solid fa-bell text-muted"></i>
+            <div class="d-flex align-items-center gap-4">
+                <button class="btn btn-light rounded-circle shadow-sm" style="width: 42px; height: 42px; position: relative; border: none;">
+                    <i class="fa-solid fa-bell text-secondary"></i>
                     <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
                 </button>
-                <div class="d-flex align-items-center gap-2">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'User') }}&background=0D7377&color=fff" alt="User" class="rounded-circle shadow-sm" width="40">
+                <div class="d-flex align-items-center gap-3">
                     <div class="d-none d-md-block text-end">
-                        <div class="fw-bold text-dark" style="font-size: var(--fs-text-sm);">{{ auth()->user()->name ?? 'User' }}</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Administrator</div>
+                        <div class="fw-bold text-dark" style="font-size: 0.9rem;">{{ auth()->user()->name ?? 'Administrator' }}</div>
+                        <div class="text-secondary" style="font-size: 0.75rem;">{{ auth()->user()->email ?? 'admin@gmail.com' }}</div>
                     </div>
+                    <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'User') }}&background=0F172A&color=fff&rounded=true" alt="User" width="42" class="shadow-sm">
                 </div>
             </div>
         </nav>
