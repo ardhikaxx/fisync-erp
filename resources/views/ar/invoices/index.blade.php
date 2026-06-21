@@ -49,8 +49,10 @@
                                 <span class="fs-badge fs-badge-success">Lunas</span>
                             @elseif($inv->status == 'partial')
                                 <span class="fs-badge fs-badge-warning">Sebagian</span>
+                                <a href="{{ route('ar.receipts.create', $inv->id) }}" class="btn btn-sm btn-outline-success ms-2 py-0"><i class="fa-solid fa-money-bill"></i> Terima</a>
                             @elseif($inv->status == 'posted')
                                 <span class="fs-badge fs-badge-info">Diposting</span>
+                                <a href="{{ route('ar.receipts.create', $inv->id) }}" class="btn btn-sm btn-outline-success ms-2 py-0"><i class="fa-solid fa-money-bill"></i> Terima</a>
                             @else
                                 <span class="fs-badge fs-badge-secondary">{{ ucfirst($inv->status) }}</span>
                             @endif

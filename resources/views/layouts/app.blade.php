@@ -47,7 +47,13 @@
             <a href="{{ route('ap.invoices.index') }}" class="fs-sidebar-item {{ request()->routeIs('ap.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-money-bill-transfer"></i> Hutang (AP)
             </a>
-            
+            <a href="{{ route('assets.index') }}" class="fs-sidebar-item {{ request()->routeIs('assets.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-building"></i> Aset Tetap
+            </a>
+            <a href="{{ route('budgets.index') }}" class="fs-sidebar-item {{ request()->routeIs('budgets.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-chart-pie"></i> Anggaran
+            </a>
+
             <span class="fs-sidebar-heading mt-4">Master Data</span>
             <a href="{{ route('coa.index') }}" class="fs-sidebar-item {{ request()->routeIs('coa.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-sitemap"></i> Chart of Accounts

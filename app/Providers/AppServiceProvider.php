@@ -4,6 +4,12 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Models\Accounting\Transaction;
+use App\Models\AR\Invoice;
+use App\Models\AP\SupplierInvoice;
+use App\Models\CashBank\CashBankTransaction;
+use App\Observers\AuditObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Transaction::observe(AuditObserver::class);
+        Invoice::observe(AuditObserver::class);
+        SupplierInvoice::observe(AuditObserver::class);
+        CashBankTransaction::observe(AuditObserver::class);
     }
 }

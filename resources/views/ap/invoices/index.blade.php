@@ -47,6 +47,7 @@
                                 <span class="fs-badge fs-badge-success">Lunas</span>
                             @elseif($inv->status == 'approved')
                                 <span class="fs-badge fs-badge-info">Disetujui</span>
+                                <a href="{{ route('ap.payments.create', $inv->id) }}" class="btn btn-sm btn-outline-danger ms-2 py-0"><i class="fa-solid fa-money-bill-transfer"></i> Bayar</a>
                             @else
                                 <span class="fs-badge fs-badge-secondary">{{ ucfirst($inv->status) }}</span>
                             @endif
