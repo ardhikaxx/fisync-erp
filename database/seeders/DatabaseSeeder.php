@@ -54,10 +54,10 @@ class DatabaseSeeder extends Seeder
 
         // 3. User
         $admin = User::firstOrCreate(
-            ['email' => 'admin@finsync.com'],
+            ['email' => 'admin@gmail.com'],
             [
                 'name' => 'Super Administrator',
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('password'),
                 'branch_id' => $hq->id,
                 'department_id' => $dept->id,
                 'is_active' => true
