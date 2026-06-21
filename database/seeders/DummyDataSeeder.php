@@ -219,7 +219,7 @@ class DummyDataSeeder extends Seeder
             }
 
             // Routine Cash Bank out for Payroll & Electricity every month
-            $gajiDate = $baseDate->copy()->endOfMonth();
+            $gajiDate = $baseDate->copy()->endOfMonth()->startOfDay();
             $gajiPeriod = $getPeriod($gajiDate);
             if($gajiPeriod) {
                 $gajiTransaction = new Transaction([

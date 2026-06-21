@@ -26,8 +26,10 @@ class CashBankTransactionController extends Controller
 
     public function index()
     {
-        $transactions = CashBankTransaction::with(['bankAccount', 'transactionCategory'])
-            ->orderBy('transaction_date', 'desc')
+        $transactions = CashBankTransaction::with(['bankAccount', 'transactionCategory', 'transaction'])
+            ->join('transactions', 'cash_bank_transactions.transaction_id', '=', 'transactions.id')
+            ->orderBy('transactions.transaction_date', 'desc')
+            ->select('cash_bank_transactions.*')
             ->paginate(15);
 
         return view('cashbank.index', compact('transactions'));
@@ -71,19 +73,31 @@ class CashBankTransactionController extends Controller
 
         DB::beginTransaction();
         try {
-            // Generate Transaction Number for CashBank
+            // We use JournalEngine to create the base Transaction
             $trxNumber = 'CB-' . date('Ym', strtotime($date)) . '-' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
+            // We create a dummy model to pass into post() or we can let post() create the Transaction and then we create CashBankTransaction
+            $gajiTransaction = new \App\Models\Accounting\Transaction([
+                'transaction_number' => $trxNumber,
+                'transaction_date' => $request->transaction_date,
+                'description' => $request->description,
+                'branch_id' => $request->branch_id,
+                'fiscal_period_id' => $period->id,
+                'currency_id' => Currency::where('is_base_currency', true)->first()->id,
+                'status' => 'posted',
+                'created_by' => Auth::id(),
+                'posted_by' => Auth::id(),
+                'posted_at' => \Carbon\Carbon::now()
+            ]);
+            $gajiTransaction->save();
+
             $cashBankTrx = new CashBankTransaction();
-            $cashBankTrx->transaction_number = $trxNumber;
-            $cashBankTrx->transaction_type = $request->transaction_type;
-            $cashBankTrx->transaction_date = $request->transaction_date;
+            $cashBankTrx->transaction_id = $gajiTransaction->id;
+            $cashBankTrx->type = $request->transaction_type;
             $cashBankTrx->bank_account_id = null; // simplified, we use COA directly here
-            $cashBankTrx->transaction_category_id = $request->category_id ?? null;
+            $cashBankTrx->category_id = $request->category_id ?? null;
             $cashBankTrx->amount = $request->amount;
-            $cashBankTrx->reference_number = $request->reference_number;
-            $cashBankTrx->description = $request->description;
-            $cashBankTrx->status = 'completed';
+            $cashBankTrx->branch_id = $request->branch_id;
             $cashBankTrx->created_by = Auth::id();
             $cashBankTrx->save();
 

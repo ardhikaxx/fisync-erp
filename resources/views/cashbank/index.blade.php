@@ -35,19 +35,19 @@
                 <tbody>
                     @forelse($transactions as $trx)
                     <tr>
-                        <td style="padding-left: 1.5rem;" class="fw-bold">{{ \Carbon\Carbon::parse($trx->transaction_date)->format('d M Y') }}</td>
-                        <td class="font-mono fw-bold text-dark">{{ $trx->transaction_number }}</td>
+                        <td style="padding-left: 1.5rem;" class="fw-bold">{{ \Carbon\Carbon::parse($trx->transaction->transaction_date)->format('d M Y') }}</td>
+                        <td class="font-mono fw-bold text-dark">{{ $trx->transaction->transaction_number }}</td>
                         <td>
-                            @if($trx->transaction_type == 'in')
+                            @if($trx->type == 'cash_in')
                                 <span class="fs-badge fs-badge-success"><i class="fa-solid fa-arrow-down"></i> Kas Masuk</span>
                             @else
                                 <span class="fs-badge fs-badge-danger"><i class="fa-solid fa-arrow-up"></i> Kas Keluar</span>
                             @endif
                         </td>
                         <td>{{ $trx->transactionCategory->name ?? '-' }}</td>
-                        <td>{{ Str::limit($trx->description, 50) }}</td>
-                        <td class="text-end font-mono fw-bold {{ $trx->transaction_type == 'in' ? 'text-success' : 'text-danger' }}" style="padding-right: 1.5rem;">
-                            {{ $trx->transaction_type == 'in' ? '+' : '-' }} Rp {{ number_format($trx->amount, 0, ',', '.') }}
+                        <td>{{ Str::limit($trx->transaction->description, 50) }}</td>
+                        <td class="text-end font-mono fw-bold {{ $trx->type == 'cash_in' ? 'text-success' : 'text-danger' }}" style="padding-right: 1.5rem;">
+                            {{ $trx->type == 'cash_in' ? '+' : '-' }} Rp {{ number_format($trx->amount, 0, ',', '.') }}
                         </td>
                     </tr>
                     @empty
