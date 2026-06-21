@@ -17,4 +17,9 @@ class CashBankTransaction extends Model
     {
         return $this->belongsTo(TransactionCategory::class, 'category_id');
     }
+
+    public function transaction()
+    {
+        return $this->belongsTo(\App\Models\Accounting\Transaction::class, 'transaction_id');
+    }
 }
