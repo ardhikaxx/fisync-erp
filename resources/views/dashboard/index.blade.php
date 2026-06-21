@@ -96,17 +96,17 @@
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                labels: {!! json_encode($chartLabels) !!},
                 datasets: [{
                     label: 'Arus Kas Masuk',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: {!! json_encode($cashIn) !!},
                     borderColor: '#1E8E5A',
                     backgroundColor: 'rgba(30, 142, 90, 0.1)',
                     tension: 0.4,
                     fill: true
                 }, {
                     label: 'Arus Kas Keluar',
-                    data: [2, 3, 20, 5, 1, 4],
+                    data: {!! json_encode($cashOut) !!},
                     borderColor: '#D32F4E',
                     backgroundColor: 'rgba(211, 47, 78, 0.1)',
                     tension: 0.4,

@@ -48,8 +48,34 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
 
+        // Chart Data (6 Bulan Terakhir Arus Kas Kasaran)
+        $chartLabels = [];
+        $cashIn = [];
+        $cashOut = [];
+
+        for ($i = 5; $i >= 0; $i--) {
+            $date = \Carbon\Carbon::now()->subMonths($i);
+            $chartLabels[] = $date->translatedFormat('M y'); // e.g., 'Jan 26'
+
+            $in = JournalEntry::whereHas('transaction', function($q) use ($date) {
+                $q->whereMonth('transaction_date', $date->month)->whereYear('transaction_date', $date->year);
+            })->whereHas('account', function($q) {
+                $q->where('account_code', 'like', '1-11%');
+            })->sum('debit_base');
+
+            $out = JournalEntry::whereHas('transaction', function($q) use ($date) {
+                $q->whereMonth('transaction_date', $date->month)->whereYear('transaction_date', $date->year);
+            })->whereHas('account', function($q) {
+                $q->where('account_code', 'like', '1-11%');
+            })->sum('credit_base');
+
+            $cashIn[] = $in;
+            $cashOut[] = $out;
+        }
+
         return view('dashboard.index', compact(
-            'totalKasBank', 'piutangUnpaid', 'hutangUnpaid', 'labaBersih', 'recentInvoices'
+            'totalKasBank', 'piutangUnpaid', 'hutangUnpaid', 'labaBersih', 'recentInvoices',
+            'chartLabels', 'cashIn', 'cashOut'
         ));
     }
 }
