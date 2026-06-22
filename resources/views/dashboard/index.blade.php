@@ -51,38 +51,47 @@
 
 <div class="row g-4">
     <div class="col-12 col-lg-8">
-        <div class="card">
-            <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
-                <h5 class="fw-bold mb-0">Arus Kas (Kasaran)</h5>
+        <div class="card border-0 shadow-sm" style="border-radius: 16px;">
+            <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
+                <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Arus Kas (Kasaran)</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body px-4 pb-4">
                 <canvas id="cashflowChart" height="100"></canvas>
             </div>
         </div>
     </div>
     
     <div class="col-12 col-lg-4">
-        <div class="card h-100">
-            <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
-                <h5 class="fw-bold mb-0">Invoice Jatuh Tempo</h5>
+        <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
+            <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Invoice Jatuh Tempo</h5>
+                <span class="badge bg-danger-subtle text-danger rounded-pill px-3">{{ $recentInvoices->count() }}</span>
             </div>
-            <div class="card-body">
+            <div class="card-body px-4 pb-4">
                 @if($recentInvoices->count() > 0)
-                    <div class="list-group list-group-flush">
+                    <div class="d-flex flex-column gap-3">
                         @foreach($recentInvoices as $inv)
-                        <div class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center border-bottom">
-                            <div>
-                                <h6 class="mb-1 fw-bold">{{ $inv->invoice_number }}</h6>
-                                <small class="text-muted">{{ $inv->customer->name }} &bull; Jatuh Tempo: <span class="text-danger">{{ \Carbon\Carbon::parse($inv->due_date)->format('d M Y') }}</span></small>
+                        <div class="p-3 rounded-3" style="background: #fdfdfd; border: 1px solid rgba(13,115,119,0.05); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.03)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-primary-soft text-primary fw-semibold" style="font-size: 0.75rem;">{{ $inv->invoice_number }}</span>
+                                <span class="fw-bold" style="font-family: var(--fs-font-mono); font-size: 1.05rem; color: var(--fs-text-primary);">Rp {{ number_format($inv->balance_due, 0, ',', '.') }}</span>
                             </div>
-                            <span class="fw-bold font-mono text-danger">Rp {{ number_format($inv->balance_due, 0, ',', '.') }}</span>
+                            <div class="fw-semibold text-truncate mb-1" style="font-size: 0.95rem; color: var(--fs-text-secondary); max-width: 90%;">
+                                {{ $inv->customer->name }}
+                            </div>
+                            <div class="d-flex align-items-center text-danger" style="font-size: 0.8rem; font-weight: 500;">
+                                <i class="fa-regular fa-clock me-1"></i> Jatuh Tempo: {{ \Carbon\Carbon::parse($inv->due_date)->translatedFormat('d M Y') }}
+                            </div>
                         </div>
                         @endforeach
                     </div>
                 @else
-                    <div class="text-center text-muted py-5">
-                        <i class="fa-solid fa-check-circle fs-1 text-success mb-3"></i>
-                        <p>Tidak ada invoice yang mendekati jatuh tempo.</p>
+                    <div class="d-flex flex-column align-items-center justify-content-center h-100 text-muted py-4">
+                        <div class="bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="fa-solid fa-check fs-2"></i>
+                        </div>
+                        <h6 class="fw-bold mb-1" style="color: var(--fs-text-primary);">Semua Aman!</h6>
+                        <p class="text-center" style="font-size: 0.9rem;">Tidak ada invoice yang mendekati jatuh tempo.</p>
                     </div>
                 @endif
             </div>
