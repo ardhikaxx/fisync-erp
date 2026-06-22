@@ -102,22 +102,42 @@
     <div class="fs-main-content">
         <!-- Topbar -->
         <nav class="fs-topbar">
-            <!-- Left space for branch switcher/search later -->
-            <div class="d-flex align-items-center">
-                <!-- Search can go here -->
+            <!-- Left: Search & Branch -->
+            <div class="d-flex align-items-center gap-3">
+                <div class="fs-topbar-search">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Cari menu, transaksi, atau laporan...">
+                    <div class="shortcut-key">Ctrl K</div>
+                </div>
+                
+                <div class="fs-topbar-branch d-none d-lg-flex">
+                    <div class="branch-icon"><i class="fa-solid fa-building"></i></div>
+                    <div class="branch-text">
+                        <span class="label">Kantor Aktif</span>
+                        <span class="value">Pusat (Jakarta) <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.7rem;"></i></span>
+                    </div>
+                </div>
             </div>
             
-            <div class="d-flex align-items-center gap-4">
-                <div class="position-relative cursor-pointer">
-                    <i class="fa-solid fa-bell text-secondary fs-5"></i>
+            <!-- Right: Actions & User -->
+            <div class="d-flex align-items-center gap-3">
+                <button class="fs-topbar-action position-relative">
+                    <i class="fa-regular fa-bell"></i>
                     <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
-                </div>
-                <div class="d-flex align-items-center gap-3" style="cursor: pointer;">
-                    <div class="d-none d-md-block text-end">
-                        <div class="fw-bold text-dark" style="font-size: 0.85rem;">{{ auth()->user()->name ?? 'Administrator' }}</div>
+                </button>
+                <button class="fs-topbar-action d-none d-sm-block">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+
+                <div class="fs-separator mx-1"></div>
+
+                <div class="fs-topbar-user" style="cursor: pointer;">
+                    <div class="d-none d-md-block text-end me-3">
+                        <div class="fw-bold text-dark" style="font-size: 0.85rem; letter-spacing: -0.2px;">{{ auth()->user()->name ?? 'Administrator' }}</div>
                         <div class="text-secondary" style="font-size: 0.75rem;">{{ auth()->user()->email ?? 'Finance Dept' }}</div>
                     </div>
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'Admin') }}&background=E8F2FB&color=2C7EC9&rounded=true" alt="User" width="38" class="shadow-sm">
+                    <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'Admin') }}&background=E8F2FB&color=2C7EC9&rounded=true" alt="User" class="user-avatar">
+                    <i class="fa-solid fa-chevron-down ms-2 text-secondary d-none d-sm-block" style="font-size: 0.7rem;"></i>
                 </div>
             </div>
         </nav>
