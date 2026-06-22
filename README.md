@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="public/favicon.ico" alt="FiSync Logo" width="100">
-</p>
+
 <h1 align="center">FiSync ERP</h1>
 
 <p align="center">
