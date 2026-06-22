@@ -1,59 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+  <img src="public/favicon.ico" alt="FiSync Logo" width="100">
+</p>
+<h1 align="center">FiSync ERP</h1>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  Sistem <b>Enterprise Resource Planning (ERP)</b> dan <b>Manajemen Keuangan Akuntansi</b> modern berbasis web. Dibangun menggunakan <b>Laravel 12</b> dengan fokus utama pada kecepatan, keakuratan data (Double-Entry Accounting), serta antarmuka (UI/UX) yang premium dan responsif.
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Fitur Utama (Features)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Sistem **FiSync ERP** dilengkapi dengan modul-modul esensial untuk mengelola keuangan bisnis skala menengah ke atas:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 📊 1. Premium Executive Dashboard
+- **Real-time KPI Cards**: Pantau Total Kas & Bank, Piutang Belum Tertagih, Hutang Jatuh Tempo, dan estimasi Laba Bersih secara instan.
+- **Grafik Arus Kas (Cash Flow)**: Visualisasi tren pemasukan vs pengeluaran dalam 6 bulan terakhir menggunakan Chart.js.
+- **Komposisi Pengeluaran**: *Donut chart* interaktif untuk menganalisis pengeluaran terbesar bisnis Anda.
+- **Tracker Invoice Jatuh Tempo**: Daftar interaktif tagihan yang mendekati/lewat batas waktu. Cukup klik untuk langsung diarahkan ke halaman pembayaran.
 
-## Learning Laravel
+### 💰 2. Core Accounting (Double-Entry System)
+- **Chart of Accounts (COA)**: Manajemen hierarki akun standar akuntansi secara dinamis.
+- **Jurnal Umum (General Journal)**: Pencatatan jurnal manual berbasis *double-entry* (Debit/Kredit harus seimbang/balance).
+- **Laporan Keuangan Otomatis (Reports)**:
+  - **Buku Besar (General Ledger)**: Melacak histori setiap akun secara mendetail.
+  - **Laba Rugi (Income Statement)**: Kalkulasi otomatis Pendapatan vs Beban per periode.
+  - **Neraca (Balance Sheet)**: Laporan aset, kewajiban, dan ekuitas yang selalu akurat dan seimbang.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🤝 3. Accounts Receivable (AR) & Accounts Payable (AP)
+- **Manajemen Invoice (Tagihan)**: Buat, cetak, dan pantau tagihan untuk pelanggan (AR).
+- **Penerimaan Pembayaran (Receipts)**: Catat pembayaran parsial maupun lunas terhadap suatu invoice pelanggan.
+- **Tagihan Supplier (Vendor Invoices)**: Catat hutang ke vendor dan jadwalkan pembayaran (AP).
+- **Buku Kontak**: Manajemen data Pelanggan (Customers) dan Pemasok (Suppliers).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🏦 4. Cash & Bank Management
+- **Kas Keluar & Masuk**: Catat pengeluaran operasional instan dan pemasukan kas secara rapi.
+- **Multi-Branch & Currency**: Dukungan transaksi untuk banyak cabang (Pusat/Cabang) secara bersamaan.
 
-## Laravel Sponsors
+### 📥 5. Ekspor Laporan Sekali Klik
+- **Export to PDF**: Cetak tabel aktivitas, tabel jurnal, hingga laporan keuangan menjadi PDF berdesain rapi dengan kop dokumen otomatis (menggunakan `barryvdh/laravel-dompdf`).
+- **Export to Excel**: Ekspor tabel transaksi ke dalam format *spreadsheet* `.xlsx` yang sudah dikustomisasi ukuran kolom dan ketebalan teksnya (menggunakan `maatwebsite/excel`).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🛡️ 6. Keamanan & Audit Trail (Log Aktivitas)
+- **Sistem Otentikasi Aman**: Login, deteksi *user* aktif, dan pengubahan kata sandi terenkripsi.
+- **Log Aktivitas Pengguna (Audit Trail)**: Merekam setiap jejak aktivitas pengguna (*Siapa*, *Melakukan Apa*, *Kapan*, dan dari *IP Address mana*). Sistem merekam otomatis kejadian Login, Logout, dan perubahan data krusial.
+- **Konfirmasi Interaktif (SweetAlert2)**: Cegah salah pencet atau *accidental clicks* saat melakukan *Logout* atau menghapus data berkat validasi pop-up elegan.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠️ Teknologi & Stack
 
-## Contributing
+Aplikasi ini dibangun di atas pondasi teknologi modern:
+- **Backend Framework**: [Laravel 12.x](https://laravel.com) (PHP 8.2+)
+- **Database**: MySQL / MariaDB (via Eloquent ORM)
+- **Frontend & Styling**: 
+  - Bootstrap 5 (Customized)
+  - Custom CSS (`finsync.css` dengan CSS Variables untuk desain premium)
+  - Font Awesome 6 (Icons)
+- **Data Visualization**: Chart.js
+- **Packages/Dependencies**:
+  - `maatwebsite/excel` (Ekspor Excel)
+  - `barryvdh/laravel-dompdf` (Ekspor PDF)
+  - `spatie/laravel-permission` (Manajemen Hak Akses)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 💻 Instalasi Lokal (Development)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Untuk menjalankan proyek FiSync ERP di komputer lokal Anda, ikuti langkah-langkah berikut:
 
-## Security Vulnerabilities
+1. **Kloning Repositori**
+   ```bash
+   git clone https://github.com/ardhikaxx/fisync-erp.git
+   cd fisync-erp
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Install Dependensi Composer & NPM**
+   ```bash
+   composer install
+   npm install
+   npm run build
+   ```
 
-## License
+3. **Konfigurasi Environment (.env)**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Sesuaikan konfigurasi koneksi `DB_` (Database) di dalam file `.env` Anda sesuai dengan pengaturan MySQL lokal Anda.*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Migrasi Database & Seeding (Opsional jika ada seeder)**
+   ```bash
+   php artisan migrate
+   # php artisan db:seed (Jika ada seeder awal)
+   ```
+
+5. **Jalankan Development Server**
+   ```bash
+   php artisan serve
+   ```
+   *Aplikasi kini bisa diakses melalui `http://127.0.0.1:8000`*
+
+---
+
+## 🎨 Panduan Desain (UI/UX)
+Bagi *developer* yang ingin menambahkan tampilan baru, harap berpedoman pada `design-erp.md` dan menggunakan *utility classes* pada `finsync.css`. Beberapa aturan emas:
+- Selalu gunakan warna *primary* `--fs-primary` (`#0D7377`) untuk tombol utama.
+- Hindari penggunaan *alert* bawaan browser; selalu gunakan `FSAlert` (SweetAlert2) untuk konfirmasi.
+- Pastikan *Card* di dashboard dipasang kelas `.fs-custom-scrollbar` jika isinya memanjang ke bawah.
+
+---
+**FiSync ERP** - Diciptakan untuk menyederhanakan kompleksitas, tanpa mengorbankan fungsionalitas.
