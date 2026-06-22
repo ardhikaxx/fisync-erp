@@ -21,6 +21,9 @@ Route::middleware('auth')->group(function () {
     // Profile Settings
     Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+    // System
+    Route::get('/system/activity-logs', [\App\Http\Controllers\System\ActivityLogController::class, 'index'])->name('system.activity_logs.index');
     
     // Chart of Accounts
     Route::get('/coa', [\App\Http\Controllers\Accounting\ChartOfAccountController::class, 'index'])->name('coa.index');

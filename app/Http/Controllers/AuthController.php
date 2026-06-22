@@ -35,6 +35,13 @@ class AuthController extends Controller
             $user->last_login_at = now();
             $user->save();
 
+            \App\Models\System\ActivityLog::create([
+                'user_id' => $user->id,
+                'action' => 'login',
+                'description' => 'User berhasil login ke sistem.',
+                'ip_address' => request()->ip()
+            ]);
+
             return redirect()->intended('dashboard');
         }
 
@@ -45,6 +52,15 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        if (Auth::check()) {
+            \App\Models\System\ActivityLog::create([
+                'user_id' => Auth::id(),
+                'action' => 'logout',
+                'description' => 'User logout dari sistem.',
+                'ip_address' => request()->ip()
+            ]);
+        }
+
         Auth::logout();
         
         $request->session()->invalidate();

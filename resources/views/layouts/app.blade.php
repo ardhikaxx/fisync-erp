@@ -89,6 +89,9 @@
             <a href="{{ route('periods.index') }}" class="fs-sidebar-item {{ request()->routeIs('periods.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-calendar-check"></i> Tutup Buku
             </a>
+            <a href="{{ route('system.activity_logs.index') }}" class="fs-sidebar-item {{ request()->routeIs('system.activity_logs.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-clipboard-list"></i> Log Aktivitas
+            </a>
             <a href="#" class="fs-sidebar-item text-danger mt-auto" onclick="event.preventDefault(); FSAlert.konfirmasiLogout(() => document.getElementById('logout-form').submit());">
                 <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>

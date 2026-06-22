@@ -37,6 +37,15 @@ class ProfileController extends Controller
 
         $user->save();
 
+        \App\Models\System\ActivityLog::create([
+            'user_id' => $user->id,
+            'action' => 'update',
+            'model_type' => get_class($user),
+            'model_id' => $user->id,
+            'description' => 'Memperbarui profil (Nama/Email/Password)',
+            'ip_address' => request()->ip()
+        ]);
+
         return redirect()->route('profile.index')->with('success', 'Profil berhasil diperbarui!');
     }
 }
