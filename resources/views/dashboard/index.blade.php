@@ -18,7 +18,7 @@
 </div>
 
 <!-- KPI Cards -->
-<div class="row g-4 mb-4">
+<div class="row g-4 mb-2">
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="fs-kpi-card">
             <div class="fs-kpi-icon icon-primary"><i class="fa-solid fa-wallet"></i></div>
