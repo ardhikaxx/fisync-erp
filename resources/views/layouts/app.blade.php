@@ -54,15 +54,35 @@
                 <i class="fa-solid fa-chart-pie"></i> Anggaran
             </a>
 
+            <span class="fs-sidebar-heading mt-3">Laporan (Reports)</span>
+            <a href="{{ route('reports.general_ledger') }}" class="fs-sidebar-item {{ request()->routeIs('reports.general_ledger') ? 'active' : '' }}">
+                <i class="fa-solid fa-book"></i> Buku Besar
+            </a>
+            <a href="{{ route('reports.income_statement') }}" class="fs-sidebar-item {{ request()->routeIs('reports.income_statement') ? 'active' : '' }}">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Laba Rugi
+            </a>
+            <a href="{{ route('reports.balance_sheet') }}" class="fs-sidebar-item {{ request()->routeIs('reports.balance_sheet') ? 'active' : '' }}">
+                <i class="fa-solid fa-scale-balanced"></i> Neraca
+            </a>
+
             <span class="fs-sidebar-heading mt-3">Master Data</span>
             <a href="{{ route('coa.index') }}" class="fs-sidebar-item {{ request()->routeIs('coa.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-sitemap"></i> Chart of Accounts
             </a>
-            <a href="#" class="fs-sidebar-item">
-                <i class="fa-solid fa-database"></i> Master Data
+            <a href="{{ route('customers.index') }}" class="fs-sidebar-item {{ request()->routeIs('customers.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-users"></i> Pelanggan (Customers)
+            </a>
+            <a href="{{ route('suppliers.index') }}" class="fs-sidebar-item {{ request()->routeIs('suppliers.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-truck-field"></i> Supplier (Vendor)
             </a>
             
             <span class="fs-sidebar-heading mt-3">Sistem</span>
+            <a href="{{ route('roles.index') }}" class="fs-sidebar-item {{ request()->routeIs('roles.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-users-gear"></i> Hak Akses (Role)
+            </a>
+            <a href="{{ route('periods.index') }}" class="fs-sidebar-item {{ request()->routeIs('periods.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-calendar-check"></i> Tutup Buku
+            </a>
             <a href="#" class="fs-sidebar-item text-danger mt-auto" onclick="event.preventDefault(); FSAlert.konfirmasiLogout(() => document.getElementById('logout-form').submit());">
                 <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>

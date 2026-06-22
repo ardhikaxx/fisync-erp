@@ -3,6 +3,12 @@
 @section('title', 'Aset Tetap (Fixed Assets)')
 
 @section('actions')
+<form action="{{ route('assets.depreciation') }}" method="POST" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-warning" onclick="return confirm('Jalankan penyusutan untuk bulan ini?')">
+        <i class="fa-solid fa-cogs"></i> Jalankan Penyusutan
+    </button>
+</form>
 <a href="{{ route('assets.create') }}" class="btn btn-fs-primary">
     <i class="fa-solid fa-plus"></i> Tambah Aset Baru
 </a>

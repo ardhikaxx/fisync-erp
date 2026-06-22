@@ -26,6 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/journals/create', [\App\Http\Controllers\Accounting\ManualJournalController::class, 'create'])->name('journals.create');
     Route::post('/journals', [\App\Http\Controllers\Accounting\ManualJournalController::class, 'store'])->name('journals.store');
 
+    // Period Closing
+    Route::get('/periods', [\App\Http\Controllers\Accounting\PeriodController::class, 'index'])->name('periods.index');
+    Route::post('/periods/{period}/close', [\App\Http\Controllers\Accounting\PeriodController::class, 'closePeriod'])->name('periods.close');
+    Route::post('/periods/{period}/open', [\App\Http\Controllers\Accounting\PeriodController::class, 'openPeriod'])->name('periods.open');
+
+    // Reports (Laporan Keuangan)
+    Route::get('/reports/general-ledger', [\App\Http\Controllers\Accounting\ReportController::class, 'generalLedger'])->name('reports.general_ledger');
+    Route::get('/reports/income-statement', [\App\Http\Controllers\Accounting\ReportController::class, 'incomeStatement'])->name('reports.income_statement');
+    Route::get('/reports/balance-sheet', [\App\Http\Controllers\Accounting\ReportController::class, 'balanceSheet'])->name('reports.balance_sheet');
+
     // Kas & Bank
     Route::get('/cashbank', [\App\Http\Controllers\CashBank\CashBankTransactionController::class, 'index'])->name('cashbank.index');
     Route::get('/cashbank/create', [\App\Http\Controllers\CashBank\CashBankTransactionController::class, 'create'])->name('cashbank.create');
@@ -48,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/ap/payments/{invoice}', [\App\Http\Controllers\AP\ApPaymentController::class, 'store'])->name('ap.payments.store');
 
     // Aset Tetap
+    Route::post('/assets/depreciation', [\App\Http\Controllers\Asset\DepreciationController::class, 'run'])->name('assets.depreciation');
     Route::get('/assets', [\App\Http\Controllers\Asset\FixedAssetController::class, 'index'])->name('assets.index');
     Route::get('/assets/create', [\App\Http\Controllers\Asset\FixedAssetController::class, 'create'])->name('assets.create');
     Route::post('/assets', [\App\Http\Controllers\Asset\FixedAssetController::class, 'store'])->name('assets.store');
@@ -56,4 +67,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/budgets', [\App\Http\Controllers\Budget\BudgetController::class, 'index'])->name('budgets.index');
     Route::get('/budgets/create', [\App\Http\Controllers\Budget\BudgetController::class, 'create'])->name('budgets.create');
     Route::post('/budgets', [\App\Http\Controllers\Budget\BudgetController::class, 'store'])->name('budgets.store');
+
+    // Master Data
+    Route::resource('customers', \App\Http\Controllers\Master\CustomerController::class)->except(['show', 'destroy']);
+    Route::resource('suppliers', \App\Http\Controllers\Master\SupplierController::class)->except(['show', 'destroy']);
+
+    // Sistem / RBAC
+    Route::get('/system/roles', [\App\Http\Controllers\System\RoleController::class, 'index'])->name('roles.index');
+    Route::post('/system/roles/assign', [\App\Http\Controllers\System\RoleController::class, 'assignRole'])->name('roles.assign');
 });

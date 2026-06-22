@@ -105,17 +105,33 @@ class DummyDataSeeder extends Seeder
             ]);
         }
 
-        // 5. Customers & Suppliers (10 each)
+        // 5. Customers & Suppliers (Realistic)
+        $realCustomers = ['PT Indofood Sukses Makmur Tbk', 'PT Unilever Indonesia Tbk', 'PT Astra International Tbk', 'PT Telekomunikasi Indonesia Tbk', 'PT Bank Central Asia Tbk', 'PT Kalbe Farma Tbk', 'PT Gudang Garam Tbk', 'PT Adaro Energy Tbk', 'PT Indah Kiat Pulp & Paper Tbk', 'PT Charoen Pokphand Indonesia Tbk'];
+        
+        $realSuppliers = ['PT Pertamina (Persero)', 'PT Perusahaan Listrik Negara (Persero)', 'PT Telkomsel', 'PT Indosat Tbk', 'PT United Tractors Tbk', 'PT Semen Indonesia (Persero) Tbk', 'PT Antam Tbk', 'PT Bukit Asam Tbk', 'PT Krakatau Steel (Persero) Tbk', 'PT Pupuk Indonesia (Persero)'];
+
         $customers = [];
         $suppliers = [];
-        for($i=0; $i<10; $i++) {
+        
+        foreach($realCustomers as $idx => $company) {
             $customers[] = Customer::create([
-                'name' => $faker->company, 'email' => $faker->unique()->companyEmail, 
-                'phone' => $faker->phoneNumber, 'address' => $faker->address, 'npwp' => $faker->numerify('##.###.###.#-###.###')
+                'code' => 'CUST-00' . ($idx + 1),
+                'name' => $company, 
+                'email' => 'finance@' . strtolower(str_replace([' ', 'PT', 'Tbk', '(Persero)'], '', $company)) . '.co.id', 
+                'phone' => '021-' . rand(1000000, 9999999), 
+                'address' => 'Jl. Jend. Sudirman Kav. ' . rand(1, 100) . ', Jakarta', 
+                'npwp' => $faker->numerify('##.###.###.#-###.###')
             ]);
+        }
+        
+        foreach($realSuppliers as $idx => $company) {
             $suppliers[] = Supplier::create([
-                'name' => $faker->company, 'email' => $faker->unique()->companyEmail, 
-                'phone' => $faker->phoneNumber, 'address' => $faker->address, 'npwp' => $faker->numerify('##.###.###.#-###.###')
+                'code' => 'VEND-00' . ($idx + 1),
+                'name' => $company, 
+                'email' => 'billing@' . strtolower(str_replace([' ', 'PT', 'Tbk', '(Persero)'], '', $company)) . '.co.id', 
+                'phone' => '021-' . rand(1000000, 9999999), 
+                'address' => 'Jl. MH Thamrin No. ' . rand(1, 50) . ', Jakarta', 
+                'npwp' => $faker->numerify('##.###.###.#-###.###')
             ]);
         }
 
