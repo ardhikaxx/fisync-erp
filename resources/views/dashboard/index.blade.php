@@ -144,7 +144,7 @@
                                 <td class="py-3">
                                     <div class="text-truncate fw-medium text-dark" style="max-width: 250px;">{{ $trx->description }}</div>
                                 </td>
-                                <td class="py-3 text-end font-mono fw-bold">Rp {{ number_format($trx->total_amount, 0, ',', '.') }}</td>
+                                <td class="py-3 text-end font-mono fw-bold">Rp {{ number_format($trx->journal_entries_sum_debit, 0, ',', '.') }}</td>
                                 <td class="py-3 text-center">
                                     @if($trx->status == 'posted')
                                         <span class="badge bg-success-subtle text-success rounded-pill px-3">Posted</span>

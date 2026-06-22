@@ -94,6 +94,7 @@ class DashboardController extends Controller
 
         // Recent Transactions (Activity Table)
         $recentTransactions = Transaction::with(['branch'])
+            ->withSum('journalEntries', 'debit')
             ->orderBy('transaction_date', 'desc')
             ->orderBy('created_at', 'desc')
             ->limit(5)
