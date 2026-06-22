@@ -15,6 +15,8 @@ Route::middleware('auth')->group(function () {
     
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/export/pdf', [DashboardController::class, 'exportTransactionsPdf'])->name('dashboard.export.pdf');
+    Route::get('/dashboard/export/excel', [DashboardController::class, 'exportTransactionsExcel'])->name('dashboard.export.excel');
     
     // Profile Settings
     Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');

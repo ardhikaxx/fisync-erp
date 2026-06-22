@@ -119,4 +119,23 @@ class DashboardController extends Controller
             'recentTransactions', 'totalBudget', 'budgetUsed', 'budgetPercentage'
         ));
     }
+
+    public function exportTransactionsExcel()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\TransactionsExport, 'Aktivitas_Transaksi.xlsx');
+    }
+
+    public function exportTransactionsPdf()
+    {
+        $transactions = Transaction::with(['branch'])
+            ->withSum('journalEntries', 'debit')
+            ->orderBy('transaction_date', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->limit(50)
+            ->get();
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('dashboard.exports.transactions_pdf', compact('transactions'));
+        
+        return $pdf->download('Aktivitas_Transaksi.pdf');
+    }
 }

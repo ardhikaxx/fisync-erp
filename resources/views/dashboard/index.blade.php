@@ -18,7 +18,7 @@
 </div>
 
 <!-- KPI Cards -->
-<div class="row g-4 mb-2">
+<div class="row g-4 mb-0">
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="fs-kpi-card">
             <div class="fs-kpi-icon icon-primary"><i class="fa-solid fa-wallet"></i></div>
@@ -120,7 +120,18 @@
         <div class="card border-0 shadow-sm" style="border-radius: 16px;">
             <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
                 <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Aktivitas Transaksi Terakhir</h5>
-                <a href="{{ route('journals.index') }}" class="btn btn-sm btn-light rounded-pill px-3">Lihat Semua</a>
+                <div class="d-flex gap-2">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-fs-outline rounded-pill px-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-download me-1"></i> Ekspor
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="border-radius: 12px; font-size: 0.9rem;">
+                            <li><a class="dropdown-item py-2" href="{{ route('dashboard.export.pdf') }}"><i class="fa-solid fa-file-pdf text-danger me-2"></i>Unduh PDF</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('dashboard.export.excel') }}"><i class="fa-solid fa-file-excel text-success me-2"></i>Unduh Excel</a></li>
+                        </ul>
+                    </div>
+                    <a href="{{ route('journals.index') }}" class="btn btn-sm btn-light rounded-pill px-3">Semua</a>
+                </div>
             </div>
             <div class="card-body px-4 pb-4 overflow-auto fs-custom-scrollbar" style="max-height: 380px;">
                 <div class="table-responsive">
