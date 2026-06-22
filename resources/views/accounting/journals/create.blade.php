@@ -21,28 +21,36 @@
                 <div class="card-body p-4">
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label fw-bold">Tanggal Transaksi <span class="text-danger">*</span></label>
-                            <input type="date" name="transaction_date" class="form-control" value="{{ old('transaction_date', date('Y-m-d')) }}" required>
+                            <div class="form-floating">
+                                <input id="transaction_date" type="date" name="transaction_date" class="form-control" value="{{ old('transaction_date', date('Y-m-d')) }}" required>
+                                <label for="transaction_date">Tanggal Transaksi <span class="text-danger">*</span></label>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-bold">Cabang <span class="text-danger">*</span></label>
-                            <select name="branch_id" class="form-select" required>
-                                @foreach($branches as $branch)
-                                    <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>{{ $branch->branch_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="branch_id" name="branch_id" class="form-select" required>
+                                    @foreach($branches as $branch)
+                                        <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>{{ $branch->branch_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="branch_id">Cabang <span class="text-danger">*</span></label>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-bold">Mata Uang <span class="text-danger">*</span></label>
-                            <select name="currency_id" class="form-select" required>
-                                @foreach($currencies as $currency)
-                                    <option value="{{ $currency->id }}" {{ $currency->is_base_currency ? 'selected' : '' }}>{{ $currency->currency_code }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="currency_id" name="currency_id" class="form-select" required>
+                                    @foreach($currencies as $currency)
+                                        <option value="{{ $currency->id }}" {{ $currency->is_base_currency ? 'selected' : '' }}>{{ $currency->currency_code }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="currency_id">Mata Uang <span class="text-danger">*</span></label>
+                            </div>
                         </div>
                         <div class="col-12">
-                            <label class="form-label fw-bold">Keterangan Jurnal <span class="text-danger">*</span></label>
-                            <input type="text" name="description" class="form-control" placeholder="Contoh: Jurnal penyesuaian sewa dibayar dimuka" value="{{ old('description') }}" required>
+                            <div class="form-floating">
+                                <input id="description" type="text" name="description" class="form-control" placeholder="Contoh: Jurnal penyesuaian" value="{{ old('description') }}" required>
+                                <label for="description">Keterangan Jurnal <span class="text-danger">*</span></label>
+                            </div>
                         </div>
                     </div>
                 </div>

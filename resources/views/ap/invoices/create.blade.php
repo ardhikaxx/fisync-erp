@@ -21,47 +21,59 @@
                     
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label fw-bold">Supplier <span class="text-danger">*</span></label>
-                            <select name="supplier_id" class="form-select" required>
-                                <option value="">Pilih Supplier...</option>
-                                @foreach($suppliers as $supplier)
-                                    <option value="{{ $supplier->id }}" {{ old('supplier_id') == $supplier->id ? 'selected' : '' }}>{{ $supplier->name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="supplier_id" name="supplier_id" class="form-select" required>
+                                    <option value="">Pilih Supplier...</option>
+                                    @foreach($suppliers as $supplier)
+                                        <option value="{{ $supplier->id }}" {{ old('supplier_id') == $supplier->id ? 'selected' : '' }}>{{ $supplier->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="supplier_id">Supplier <span class="text-danger">*</span></label>
+                            </div>
                         </div>
                         
                         <div class="col-md-12">
-                            <label class="form-label fw-bold">Nomor Invoice Supplier <span class="text-danger">*</span></label>
-                            <input type="text" name="invoice_number" class="form-control" placeholder="Ex: INV-2023/X/99" value="{{ old('invoice_number') }}" required>
+                            <div class="form-floating">
+                                <input id="invoice_number" type="text" name="invoice_number" class="form-control" placeholder="Ex: INV-2023/X/99" value="{{ old('invoice_number') }}" required>
+                                <label for="invoice_number">Nomor Invoice Supplier <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Tanggal Terbit <span class="text-danger">*</span></label>
-                            <input type="date" name="invoice_date" class="form-control" value="{{ old('invoice_date', date('Y-m-d')) }}" required>
+                            <div class="form-floating">
+                                <input id="invoice_date" type="date" name="invoice_date" class="form-control" value="{{ old('invoice_date', date('Y-m-d')) }}" required>
+                                <label for="invoice_date">Tanggal Terbit <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Tanggal Jatuh Tempo <span class="text-danger">*</span></label>
-                            <input type="date" name="due_date" class="form-control" value="{{ old('due_date', date('Y-m-d', strtotime('+30 days'))) }}" required>
+                            <div class="form-floating">
+                                <input id="due_date" type="date" name="due_date" class="form-control" value="{{ old('due_date', date('Y-m-d', strtotime('+30 days'))) }}" required>
+                                <label for="due_date">Tanggal Jatuh Tempo <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Cabang <span class="text-danger">*</span></label>
-                            <select name="branch_id" class="form-select" required>
-                                @foreach($branches as $branch)
-                                    <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>{{ $branch->branch_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="branch_id" name="branch_id" class="form-select" required>
+                                    @foreach($branches as $branch)
+                                        <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>{{ $branch->branch_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="branch_id">Cabang <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Akun Beban / Persediaan <span class="text-danger">*</span></label>
-                            <select name="expense_account_id" class="form-select" required>
-                                <option value="">Pilih Akun Beban/Persediaan...</option>
-                                @foreach($expenseAccounts as $acc)
-                                    <option value="{{ $acc->id }}" {{ old('expense_account_id') == $acc->id ? 'selected' : '' }}>{{ $acc->account_code }} - {{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="expense_account_id" name="expense_account_id" class="form-select" required>
+                                    <option value="">Pilih Akun Beban/Persediaan...</option>
+                                    @foreach($expenseAccounts as $acc)
+                                        <option value="{{ $acc->id }}" {{ old('expense_account_id') == $acc->id ? 'selected' : '' }}>{{ $acc->account_code }} - {{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="expense_account_id">Akun Beban / Persediaan <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-12 mt-4">

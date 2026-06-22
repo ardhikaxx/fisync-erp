@@ -21,49 +21,67 @@
                     
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Kode Aset <span class="text-danger">*</span></label>
-                            <input type="text" name="asset_code" class="form-control font-mono" value="{{ old('asset_code', 'AST-'.date('Ymd').'-'.rand(10,99)) }}" required>
+                            <div class="form-floating">
+                                <input id="asset_code" type="text" name="asset_code" class="form-control font-mono fw-bold" value="{{ old('asset_code', 'AST-'.date('Ymd').'-'.rand(10,99)) }}" required>
+                                <label for="asset_code">Kode Aset <span class="text-danger">*</span></label>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Nama Aset <span class="text-danger">*</span></label>
-                            <input type="text" name="asset_name" class="form-control" value="{{ old('asset_name') }}" required placeholder="Ex: Mobil Operasional Xenia">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Tanggal Perolehan <span class="text-danger">*</span></label>
-                            <input type="date" name="acquisition_date" class="form-control" value="{{ old('acquisition_date', date('Y-m-d')) }}" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Harga Perolehan (Rp) <span class="text-danger">*</span></label>
-                            <input type="number" name="acquisition_cost" class="form-control font-mono" value="{{ old('acquisition_cost') }}" min="0" required>
+                            <div class="form-floating">
+                                <input id="asset_name" type="text" name="asset_name" class="form-control" value="{{ old('asset_name') }}" required placeholder="Ex: Mobil Operasional">
+                                <label for="asset_name">Nama Aset <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Umur Ekonomis (Tahun) <span class="text-danger">*</span></label>
-                            <input type="number" name="useful_life_years" class="form-control" value="{{ old('useful_life_years') }}" min="1" required>
+                            <div class="form-floating">
+                                <input id="acquisition_date" type="date" name="acquisition_date" class="form-control" value="{{ old('acquisition_date', date('Y-m-d')) }}" required>
+                                <label for="acquisition_date">Tanggal Perolehan <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Nilai Sisa / Residu (Rp) <span class="text-danger">*</span></label>
-                            <input type="number" name="salvage_value" class="form-control font-mono" value="{{ old('salvage_value', 0) }}" min="0" required>
+                            <label class="form-label fw-bold mb-1">Harga Perolehan <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input type="number" name="acquisition_cost" class="form-control font-mono text-end" value="{{ old('acquisition_cost') }}" min="0" required>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Metode Penyusutan <span class="text-danger">*</span></label>
-                            <select name="depreciation_method" class="form-select" required>
-                                <option value="straight_line">Garis Lurus (Straight Line)</option>
-                                <option value="declining_balance">Saldo Menurun (Declining Balance)</option>
-                            </select>
+                            <div class="form-floating">
+                                <input id="useful_life_years" type="number" name="useful_life_years" class="form-control text-end" value="{{ old('useful_life_years') }}" min="1" required>
+                                <label for="useful_life_years">Umur Ekonomis (Tahun) <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Cabang <span class="text-danger">*</span></label>
-                            <select name="branch_id" class="form-select" required>
-                                @foreach($branches as $branch)
-                                    <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
-                                @endforeach
-                            </select>
+                            <label class="form-label fw-bold mb-1">Nilai Sisa / Residu <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input type="number" name="salvage_value" class="form-control font-mono text-end" value="{{ old('salvage_value', 0) }}" min="0" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select id="depreciation_method" name="depreciation_method" class="form-select" required>
+                                    <option value="straight_line">Garis Lurus (Straight Line)</option>
+                                    <option value="declining_balance">Saldo Menurun (Declining Balance)</option>
+                                </select>
+                                <label for="depreciation_method">Metode Penyusutan <span class="text-danger">*</span></label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select id="branch_id" name="branch_id" class="form-select" required>
+                                    @foreach($branches as $branch)
+                                        <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="branch_id">Cabang <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-12 mt-4">
@@ -71,31 +89,37 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label fw-bold text-muted small">Akun Aset</label>
-                            <select name="asset_account_id" class="form-select form-select-sm" required>
-                                <option value="">Pilih...</option>
-                                @foreach($assetAccounts as $acc)
-                                    <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="asset_account_id" name="asset_account_id" class="form-select" required>
+                                    <option value="">Pilih...</option>
+                                    @foreach($assetAccounts as $acc)
+                                        <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="asset_account_id">Akun Aset</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-bold text-muted small">Akun Akumulasi Penyusutan</label>
-                            <select name="accumulated_depreciation_account_id" class="form-select form-select-sm" required>
-                                <option value="">Pilih...</option>
-                                @foreach($assetAccounts as $acc)
-                                    <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="accumulated_depreciation_account_id" name="accumulated_depreciation_account_id" class="form-select" required>
+                                    <option value="">Pilih...</option>
+                                    @foreach($assetAccounts as $acc)
+                                        <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="accumulated_depreciation_account_id">Akun Akumulasi Penyusutan</label>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-bold text-muted small">Akun Beban Penyusutan</label>
-                            <select name="depreciation_expense_account_id" class="form-select form-select-sm" required>
-                                <option value="">Pilih...</option>
-                                @foreach($expenseAccounts as $acc)
-                                    <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="depreciation_expense_account_id" name="depreciation_expense_account_id" class="form-select" required>
+                                    <option value="">Pilih...</option>
+                                    @foreach($expenseAccounts as $acc)
+                                        <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="depreciation_expense_account_id">Akun Beban Penyusutan</label>
+                            </div>
                         </div>
                     </div>
 

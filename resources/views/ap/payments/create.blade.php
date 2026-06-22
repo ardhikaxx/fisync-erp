@@ -26,21 +26,27 @@
                     @csrf
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Tanggal Pembayaran</label>
-                            <input type="date" name="payment_date" class="form-control" value="{{ date('Y-m-d') }}" required>
+                            <div class="form-floating">
+                                <input id="payment_date" type="date" name="payment_date" class="form-control" value="{{ date('Y-m-d') }}" required>
+                                <label for="payment_date">Tanggal Pembayaran</label>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Sumber Dana (Rekening)</label>
-                            <select name="cash_account_id" class="form-select" required>
-                                <option value="">Pilih Bank/Kas</option>
-                                @foreach($cashAccounts as $acc)
-                                    <option value="{{ $acc->id }}">{{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="cash_account_id" name="cash_account_id" class="form-select" required>
+                                    <option value="">Pilih Bank/Kas</option>
+                                    @foreach($cashAccounts as $acc)
+                                        <option value="{{ $acc->id }}">{{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="cash_account_id">Sumber Dana (Rekening)</label>
+                            </div>
                         </div>
                         <div class="col-12">
-                            <label class="form-label fw-bold">No. Referensi / Bukti Transfer</label>
-                            <input type="text" name="reference_number" class="form-control">
+                            <div class="form-floating">
+                                <input id="reference_number" type="text" name="reference_number" class="form-control" placeholder="Referensi">
+                                <label for="reference_number">No. Referensi / Bukti Transfer</label>
+                            </div>
                         </div>
                     </div>
                     <hr class="my-4">

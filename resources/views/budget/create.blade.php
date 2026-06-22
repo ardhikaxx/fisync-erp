@@ -21,35 +21,41 @@
                     
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Tahun Fiskal <span class="text-danger">*</span></label>
-                            <select name="fiscal_year_id" class="form-select" required>
-                                @foreach($fiscalYears as $fy)
-                                    <option value="{{ $fy->id }}">{{ $fy->year }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="fiscal_year_id" name="fiscal_year_id" class="form-select" required>
+                                    @foreach($fiscalYears as $fy)
+                                        <option value="{{ $fy->id }}">{{ $fy->year }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="fiscal_year_id">Tahun Fiskal <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Pusat Biaya (Cost Center) <span class="text-danger">*</span></label>
-                            <select name="cost_center_id" class="form-select" required>
-                                @foreach($costCenters as $cc)
-                                    <option value="{{ $cc->id }}">{{ $cc->code }} - {{ $cc->name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="cost_center_id" name="cost_center_id" class="form-select" required>
+                                    @foreach($costCenters as $cc)
+                                        <option value="{{ $cc->id }}">{{ $cc->code }} - {{ $cc->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="cost_center_id">Pusat Biaya (Cost Center) <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label fw-bold">Akun Beban <span class="text-danger">*</span></label>
-                            <select name="account_id" class="form-select" required>
-                                <option value="">Pilih Akun Beban...</option>
-                                @foreach($accounts as $acc)
-                                    <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="account_id" name="account_id" class="form-select" required>
+                                    <option value="">Pilih Akun Beban...</option>
+                                    @foreach($accounts as $acc)
+                                        <option value="{{ $acc->id }}">{{ $acc->account_code }} - {{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="account_id">Akun Beban <span class="text-danger">*</span></label>
+                            </div>
                         </div>
 
                         <div class="col-md-12 mt-4">
-                            <label class="form-label fw-bold">Total Anggaran Tahunan (Rp) <span class="text-danger">*</span></label>
+                            <label class="form-label fw-bold mb-1">Total Anggaran Tahunan <span class="text-danger">*</span></label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text bg-light text-primary fw-bold">Rp</span>
                                 <input type="number" name="annual_budget" class="form-control font-mono fs-4 fw-bold text-end" value="{{ old('annual_budget') }}" step="0.01" min="1" required placeholder="0">

@@ -27,25 +27,34 @@
                     @csrf
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Tanggal Penerimaan</label>
-                            <input type="date" name="receipt_date" class="form-control" value="{{ date('Y-m-d') }}" required>
+                            <div class="form-floating">
+                                <input id="receipt_date" type="date" name="receipt_date" class="form-control" value="{{ date('Y-m-d') }}" required>
+                                <label for="receipt_date">Tanggal Penerimaan</label>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Nominal Diterima</label>
-                            <input type="number" name="amount" class="form-control font-mono" value="{{ $invoice->balance_due }}" max="{{ $invoice->balance_due }}" required>
+                            <label class="form-label fw-bold mb-1">Nominal Diterima</label>
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input type="number" name="amount" class="form-control font-mono fw-bold" value="{{ $invoice->balance_due }}" max="{{ $invoice->balance_due }}" required>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Masuk ke Rekening</label>
-                            <select name="cash_account_id" class="form-select" required>
-                                <option value="">Pilih Bank/Kas</option>
-                                @foreach($cashAccounts as $acc)
-                                    <option value="{{ $acc->id }}">{{ $acc->account_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="cash_account_id" name="cash_account_id" class="form-select" required>
+                                    <option value="">Pilih Bank/Kas</option>
+                                    @foreach($cashAccounts as $acc)
+                                        <option value="{{ $acc->id }}">{{ $acc->account_name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="cash_account_id">Masuk ke Rekening</label>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">No. Referensi / Bukti Transfer</label>
-                            <input type="text" name="reference_number" class="form-control">
+                            <div class="form-floating">
+                                <input id="reference_number" type="text" name="reference_number" class="form-control" placeholder="Referensi">
+                                <label for="reference_number">No. Referensi / Bukti Transfer</label>
+                            </div>
                         </div>
                     </div>
                     <hr class="my-4">

@@ -12,49 +12,59 @@
                     
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label fw-bold">Kode Akun <span class="text-danger">*</span></label>
-                            <input type="text" name="account_code" class="form-control font-mono" placeholder="Ex: 1-1130" value="{{ old('account_code') }}" required>
+                            <div class="form-floating">
+                                <input id="account_code" type="text" name="account_code" class="form-control font-mono fw-bold" placeholder="Ex: 1-1130" value="{{ old('account_code') }}" required>
+                                <label for="account_code">Kode Akun <span class="text-danger">*</span></label>
+                            </div>
                             @error('account_code') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                         <div class="col-md-8">
-                            <label class="form-label fw-bold">Nama Akun <span class="text-danger">*</span></label>
-                            <input type="text" name="account_name" class="form-control" placeholder="Ex: Bank BRI" value="{{ old('account_name') }}" required>
+                            <div class="form-floating">
+                                <input id="account_name" type="text" name="account_name" class="form-control" placeholder="Ex: Bank BRI" value="{{ old('account_name') }}" required>
+                                <label for="account_name">Nama Akun <span class="text-danger">*</span></label>
+                            </div>
                             @error('account_name') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Tipe Akun <span class="text-danger">*</span></label>
-                            <select name="account_type" class="form-select" required>
-                                <option value="">-- Pilih Tipe --</option>
-                                <option value="asset" {{ old('account_type') == 'asset' ? 'selected' : '' }}>Aset</option>
-                                <option value="liability" {{ old('account_type') == 'liability' ? 'selected' : '' }}>Kewajiban</option>
-                                <option value="equity" {{ old('account_type') == 'equity' ? 'selected' : '' }}>Ekuitas</option>
-                                <option value="revenue" {{ old('account_type') == 'revenue' ? 'selected' : '' }}>Pendapatan</option>
-                                <option value="expense" {{ old('account_type') == 'expense' ? 'selected' : '' }}>Beban</option>
-                            </select>
+                            <div class="form-floating">
+                                <select id="account_type" name="account_type" class="form-select" required>
+                                    <option value="">-- Pilih Tipe --</option>
+                                    <option value="asset" {{ old('account_type') == 'asset' ? 'selected' : '' }}>Aset</option>
+                                    <option value="liability" {{ old('account_type') == 'liability' ? 'selected' : '' }}>Kewajiban</option>
+                                    <option value="equity" {{ old('account_type') == 'equity' ? 'selected' : '' }}>Ekuitas</option>
+                                    <option value="revenue" {{ old('account_type') == 'revenue' ? 'selected' : '' }}>Pendapatan</option>
+                                    <option value="expense" {{ old('account_type') == 'expense' ? 'selected' : '' }}>Beban</option>
+                                </select>
+                                <label for="account_type">Tipe Akun <span class="text-danger">*</span></label>
+                            </div>
                             @error('account_type') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Saldo Normal <span class="text-danger">*</span></label>
-                            <select name="normal_balance" class="form-select" required>
-                                <option value="">-- Pilih Saldo Normal --</option>
-                                <option value="debit" {{ old('normal_balance') == 'debit' ? 'selected' : '' }}>Debit</option>
-                                <option value="credit" {{ old('normal_balance') == 'credit' ? 'selected' : '' }}>Kredit</option>
-                            </select>
+                            <div class="form-floating">
+                                <select id="normal_balance" name="normal_balance" class="form-select" required>
+                                    <option value="">-- Pilih Saldo Normal --</option>
+                                    <option value="debit" {{ old('normal_balance') == 'debit' ? 'selected' : '' }}>Debit</option>
+                                    <option value="credit" {{ old('normal_balance') == 'credit' ? 'selected' : '' }}>Kredit</option>
+                                </select>
+                                <label for="normal_balance">Saldo Normal <span class="text-danger">*</span></label>
+                            </div>
                             @error('normal_balance') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label fw-bold">Induk Akun (Opsional)</label>
-                            <select name="parent_id" class="form-select">
-                                <option value="">-- Tidak ada (Ini adalah akun utama) --</option>
-                                @foreach($parentAccounts as $parent)
-                                    <option value="{{ $parent->id }}" {{ old('parent_id') == $parent->id ? 'selected' : '' }}>
-                                        {{ $parent->account_code }} - {{ $parent->account_name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <div class="form-floating">
+                                <select id="parent_id" name="parent_id" class="form-select">
+                                    <option value="">-- Tidak ada (Ini adalah akun utama) --</option>
+                                    @foreach($parentAccounts as $parent)
+                                        <option value="{{ $parent->id }}" {{ old('parent_id') == $parent->id ? 'selected' : '' }}>
+                                            {{ $parent->account_code }} - {{ $parent->account_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <label for="parent_id">Induk Akun (Opsional)</label>
+                            </div>
                             <small class="text-muted">Pilih jika akun ini adalah sub-akun dari akun grup tertentu.</small>
                         </div>
 
