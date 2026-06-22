@@ -31,6 +31,7 @@ class AuthController extends Controller
             }
 
             // Update last_login_at
+            /** @var \App\Models\User $user */
             $user = Auth::user();
             $user->last_login_at = now();
             $user->save();
