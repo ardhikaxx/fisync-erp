@@ -251,22 +251,52 @@ body {
 }
 
 .fs-sidebar-brand {
-  padding: 1.75rem 1.5rem;
-  font-weight: 800;
-  font-size: 1.4rem;
+  padding: 1.5rem 1.5rem;
   display: flex;
   align-items: center;
+  gap: 12px;
   color: #fff;
-  letter-spacing: -0.5px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   margin-bottom: 0;
   flex-shrink: 0; /* Keep brand fixed */
 }
-.fs-sidebar-brand i { 
-  color: var(--fs-primary-light); 
-  margin-right: 12px; 
-  font-size: 1.6rem; 
-  filter: drop-shadow(0 0 8px rgba(20, 168, 173, 0.4));
+
+.fs-sidebar-brand .brand-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--fs-primary), var(--fs-primary-light));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(20, 168, 173, 0.3);
+}
+
+.fs-sidebar-brand .brand-icon i { 
+  color: #fff;
+  font-size: 1.25rem; 
+}
+
+.fs-sidebar-brand .brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-sidebar-brand .brand-title {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.fs-sidebar-brand .brand-subtitle {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  margin-top: 2px;
 }
 
 .fs-sidebar-menu {

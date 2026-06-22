@@ -25,7 +25,13 @@
     <!-- Sidebar -->
     <aside class="fs-sidebar">
         <div class="fs-sidebar-brand">
-            <i class="fa-solid fa-chart-line"></i> FINSYNC
+            <div class="brand-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">FINSYNC</span>
+                <span class="brand-subtitle">Enterprise ERP</span>
+            </div>
         </div>
         
         <div class="fs-sidebar-menu mt-2">
