@@ -70,7 +70,7 @@
             <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
                 <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Arus Kas (Kasaran)</h5>
             </div>
-            <div class="card-body px-4 pb-4">
+            <div class="card-body px-4 pb-4 overflow-auto fs-custom-scrollbar" style="max-height: 380px;">
                 <canvas id="cashflowChart" height="100"></canvas>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Invoice Jatuh Tempo</h5>
                 <span class="badge bg-danger-subtle text-danger rounded-pill px-3">{{ $recentInvoices->count() }}</span>
             </div>
-            <div class="card-body px-4 pb-4 overflow-auto" style="max-height: 300px;">
+            <div class="card-body px-4 pb-4 overflow-auto fs-custom-scrollbar" style="max-height: 380px;">
                 @if($recentInvoices->count() > 0)
                     <div class="d-flex flex-column gap-3">
                         @foreach($recentInvoices as $inv)
@@ -122,7 +122,7 @@
                 <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Aktivitas Transaksi Terakhir</h5>
                 <a href="{{ route('journals.index') }}" class="btn btn-sm btn-light rounded-pill px-3">Lihat Semua</a>
             </div>
-            <div class="card-body px-4 pb-4">
+            <div class="card-body px-4 pb-4 overflow-auto fs-custom-scrollbar" style="max-height: 380px;">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0">
                         <thead class="text-secondary" style="font-size: 0.85rem; font-weight: 600;">
@@ -189,7 +189,7 @@
             <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
                 <h6 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Komposisi Pengeluaran</h6>
             </div>
-            <div class="card-body px-4 pb-4">
+            <div class="card-body px-4 pb-4 overflow-auto fs-custom-scrollbar" style="max-height: 380px;">
                 @if(count($expenseData) > 0)
                     <canvas id="expenseChart" height="250"></canvas>
                 @else
