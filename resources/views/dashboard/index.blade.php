@@ -6,10 +6,10 @@
 <div class="row g-4 mb-4">
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="fs-kpi-card">
-            <div class="fs-kpi-icon bg-primary-soft"><i class="fa-solid fa-wallet"></i></div>
+            <div class="fs-kpi-icon icon-primary"><i class="fa-solid fa-wallet"></i></div>
             <div class="fs-kpi-content">
                 <span class="fs-kpi-label">Total Kas & Bank</span>
-                <span class="fs-kpi-value">Rp {{ number_format($totalKasBank, 0, ',', '.') }}</span>
+                <span class="fs-kpi-value" style="font-size: 1.4rem;">Rp {{ number_format($totalKasBank, 0, ',', '.') }}</span>
                 <span class="fs-kpi-trend text-success"><i class="fa-solid fa-arrow-up"></i> Real-time</span>
             </div>
         </div>
@@ -17,10 +17,10 @@
     
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="fs-kpi-card">
-            <div class="fs-kpi-icon bg-warning-subtle text-warning"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <div class="fs-kpi-icon icon-warning"><i class="fa-solid fa-file-invoice-dollar"></i></div>
             <div class="fs-kpi-content">
                 <span class="fs-kpi-label">Piutang Belum Tertagih</span>
-                <span class="fs-kpi-value">Rp {{ number_format($piutangUnpaid, 0, ',', '.') }}</span>
+                <span class="fs-kpi-value" style="font-size: 1.4rem;">Rp {{ number_format($piutangUnpaid, 0, ',', '.') }}</span>
                 <span class="fs-kpi-trend text-warning"><i class="fa-solid fa-clock"></i> Menunggu Pembayaran</span>
             </div>
         </div>
@@ -28,10 +28,10 @@
 
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="fs-kpi-card">
-            <div class="fs-kpi-icon bg-danger-subtle text-danger"><i class="fa-solid fa-money-bill-transfer"></i></div>
+            <div class="fs-kpi-icon icon-danger"><i class="fa-solid fa-money-bill-transfer"></i></div>
             <div class="fs-kpi-content">
                 <span class="fs-kpi-label">Hutang Belum Dibayar</span>
-                <span class="fs-kpi-value">Rp {{ number_format($hutangUnpaid, 0, ',', '.') }}</span>
+                <span class="fs-kpi-value" style="font-size: 1.4rem;">Rp {{ number_format($hutangUnpaid, 0, ',', '.') }}</span>
                 <span class="fs-kpi-trend text-danger"><i class="fa-solid fa-exclamation-circle"></i> Perlu Perhatian</span>
             </div>
         </div>
@@ -39,10 +39,10 @@
 
     <div class="col-12 col-sm-6 col-xl-3">
         <div class="fs-kpi-card">
-            <div class="fs-kpi-icon bg-success-subtle text-success"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="fs-kpi-icon icon-success"><i class="fa-solid fa-chart-line"></i></div>
             <div class="fs-kpi-content">
                 <span class="fs-kpi-label">Laba Bersih Bulan Ini</span>
-                <span class="fs-kpi-value">Rp {{ number_format($labaBersih, 0, ',', '.') }}</span>
+                <span class="fs-kpi-value" style="font-size: 1.4rem;">Rp {{ number_format($labaBersih, 0, ',', '.') }}</span>
                 <span class="fs-kpi-trend text-success"><i class="fa-solid fa-arrow-up"></i> Perkiraan</span>
             </div>
         </div>

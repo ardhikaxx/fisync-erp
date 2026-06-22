@@ -78,38 +78,111 @@ body {
 
 /* KPI Widget */
 .fs-kpi-card {
-  background: var(--fs-bg-card);
-  border-radius: 14px;
-  border: 1px solid var(--fs-border);
-  padding: 1.25rem;
+  background: linear-gradient(145deg, #ffffff, #fdfdfd);
+  border-radius: 16px;
+  border: 1px solid rgba(13,115,119,0.08);
+  padding: 1.5rem;
   display: flex;
-  gap: 1rem;
-  box-shadow: 0 2px 8px rgba(13,115,119,0.04);
-  transition: box-shadow .2s ease, transform .2s ease;
+  align-items: flex-start;
+  gap: 1.25rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
+
+.fs-kpi-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(13,115,119,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
 .fs-kpi-card:hover {
-  box-shadow: 0 6px 16px rgba(13,115,119,0.10);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(13,115,119,0.08), 0 4px 10px rgba(13,115,119,0.04);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(13,115,119,0.15);
 }
+
 .fs-kpi-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  background-color: var(--fs-primary-soft);
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(13,115,119,0.1);
+  flex-shrink: 0;
+}
+
+.icon-primary {
+  background: linear-gradient(135deg, rgba(13,115,119,0.15), rgba(13,115,119,0.05));
   color: var(--fs-primary);
 }
+
+.icon-warning {
+  background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05));
+  color: #f59e0b;
+}
+
+.icon-danger {
+  background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
+  color: #ef4444;
+}
+
+.icon-success {
+  background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05));
+  color: #10b981;
+}
+
+.fs-kpi-card:hover .fs-kpi-icon {
+  transform: rotate(-5deg) scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 .fs-kpi-content {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
-.fs-kpi-label { font-size: var(--fs-text-xs); color: var(--fs-text-secondary); font-weight: var(--fs-weight-semibold); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.25rem; }
-.fs-kpi-value { font-family: var(--fs-font-mono); font-size: var(--fs-text-2xl); font-weight: var(--fs-weight-bold); color: var(--fs-text-primary); line-height: 1.2; }
-.fs-kpi-trend { font-size: var(--fs-text-xs); font-weight: var(--fs-weight-medium); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+
+.fs-kpi-label { 
+  font-size: 0.8rem; 
+  color: var(--fs-text-secondary); 
+  font-weight: 600; 
+  text-transform: uppercase; 
+  letter-spacing: 0.05em; 
+  margin-bottom: 0.35rem; 
+}
+
+.fs-kpi-value { 
+  font-family: var(--fs-font-mono); 
+  font-size: 1.6rem; 
+  font-weight: 800; 
+  color: var(--fs-text-primary); 
+  line-height: 1.2; 
+  letter-spacing: -0.5px;
+}
+
+.fs-kpi-trend { 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  margin-top: 8px; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 5px; 
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgba(0,0,0,0.02);
+  width: fit-content;
+}
 
 /* Clean Badges */
 .fs-badge { 
