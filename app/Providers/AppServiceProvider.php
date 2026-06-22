@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Illuminate\Pagination\Paginator::useBootstrapFive();
+        
         Transaction::observe(AuditObserver::class);
         Invoice::observe(AuditObserver::class);
         SupplierInvoice::observe(AuditObserver::class);
