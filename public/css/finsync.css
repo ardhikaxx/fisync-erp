@@ -244,7 +244,7 @@ body {
   top: 0;
   left: 0;
   height: 100vh;
-  overflow-y: auto;
+  overflow: hidden; /* Prevent full sidebar scrolling */
   z-index: 1030;
   border-right: 1px solid rgba(255,255,255,0.05);
   box-shadow: 4px 0 24px rgba(0,0,0,0.1);
@@ -259,7 +259,8 @@ body {
   color: #fff;
   letter-spacing: -0.5px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+  flex-shrink: 0; /* Keep brand fixed */
 }
 .fs-sidebar-brand i { 
   color: var(--fs-primary-light); 
@@ -271,8 +272,26 @@ body {
 .fs-sidebar-menu {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0;
+  padding: 1rem 0 2rem 0;
   gap: 0.2rem;
+  flex: 1; /* Take remaining space */
+  overflow-y: auto; /* Make only menu scrollable */
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar for Sidebar Menu */
+.fs-sidebar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.fs-sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+.fs-sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.fs-sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .fs-sidebar-heading {
