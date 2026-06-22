@@ -66,7 +66,7 @@
 
 <div class="row g-4 mb-4">
     <div class="col-12 col-lg-8">
-        <div class="card border-0 shadow-sm" style="border-radius: 16px;">
+        <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4">
                 <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Arus Kas (Kasaran)</h5>
             </div>
@@ -77,7 +77,7 @@
     </div>
     
     <div class="col-12 col-lg-4">
-        <div class="card border-0 shadow-sm" style="border-radius: 16px;">
+        <div class="card border-0 shadow-sm h-100" style="border-radius: 16px;">
             <div class="card-header bg-transparent border-bottom-0 pt-4 pb-2 px-4 d-flex justify-content-between align-items-center">
                 <h5 class="fw-bold mb-0" style="color: var(--fs-text-primary); letter-spacing: -0.3px;">Invoice Jatuh Tempo</h5>
                 <span class="badge bg-danger-subtle text-danger rounded-pill px-3">{{ $recentInvoices->count() }}</span>
