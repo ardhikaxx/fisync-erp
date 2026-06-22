@@ -93,7 +93,7 @@ class DashboardController extends Controller
         }
 
         // Recent Transactions (Activity Table)
-        $recentTransactions = Transaction::with(['entries.account', 'branch'])
+        $recentTransactions = Transaction::with(['branch'])
             ->orderBy('transaction_date', 'desc')
             ->orderBy('created_at', 'desc')
             ->limit(5)
