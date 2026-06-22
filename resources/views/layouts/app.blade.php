@@ -131,13 +131,28 @@
 
                 <div class="fs-separator mx-1"></div>
 
-                <div class="fs-topbar-user" style="cursor: pointer;">
-                    <div class="d-none d-md-block text-end me-3">
-                        <div class="fw-bold text-dark" style="font-size: 0.85rem; letter-spacing: -0.2px;">{{ auth()->user()->name ?? 'Administrator' }}</div>
-                        <div class="text-secondary" style="font-size: 0.75rem;">{{ auth()->user()->email ?? 'Finance Dept' }}</div>
+                <div class="dropdown">
+                    <div class="fs-topbar-user" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                        <div class="d-none d-md-block text-end me-3">
+                            <div class="fw-bold text-dark" style="font-size: 0.85rem; letter-spacing: -0.2px;">{{ auth()->user()->name ?? 'Administrator' }}</div>
+                            <div class="text-secondary" style="font-size: 0.75rem;">{{ auth()->user()->email ?? 'Finance Dept' }}</div>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'Admin') }}&background=E8F2FB&color=2C7EC9&rounded=true" alt="User" class="user-avatar">
+                        <i class="fa-solid fa-chevron-down ms-2 text-secondary d-none d-sm-block" style="font-size: 0.7rem;"></i>
                     </div>
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'Admin') }}&background=E8F2FB&color=2C7EC9&rounded=true" alt="User" class="user-avatar">
-                    <i class="fa-solid fa-chevron-down ms-2 text-secondary d-none d-sm-block" style="font-size: 0.7rem;"></i>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" style="border-radius: 12px; min-width: 200px; padding: 0.5rem 0;">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center py-2 px-3" href="{{ route('profile.index') }}">
+                                <i class="fa-solid fa-user text-secondary me-3" style="width: 16px;"></i> <span style="font-size: 0.9rem; font-weight: 500;">Profile Settings</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center py-2 px-3 text-danger" href="#" onclick="event.preventDefault(); FSAlert.konfirmasiLogout(() => document.getElementById('logout-form').submit());">
+                                <i class="fa-solid fa-right-from-bracket me-3" style="width: 16px;"></i> <span style="font-size: 0.9rem; font-weight: 500;">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

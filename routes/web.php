@@ -16,6 +16,10 @@ Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
+    // Profile Settings
+    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    
     // Chart of Accounts
     Route::get('/coa', [\App\Http\Controllers\Accounting\ChartOfAccountController::class, 'index'])->name('coa.index');
     Route::get('/coa/create', [\App\Http\Controllers\Accounting\ChartOfAccountController::class, 'create'])->name('coa.create');
