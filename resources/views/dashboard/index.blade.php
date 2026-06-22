@@ -86,7 +86,7 @@
                 @if($recentInvoices->count() > 0)
                     <div class="d-flex flex-column gap-3">
                         @foreach($recentInvoices as $inv)
-                        <div class="p-3 rounded-3" style="background: #fdfdfd; border: 1px solid rgba(13,115,119,0.05); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.03)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';">
+                        <div class="p-3 rounded-3" style="background: #fdfdfd; border: 1px solid rgba(13,115,119,0.05); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.03)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none';" onclick="window.location.href='{{ route('ar.receipts.create', $inv->id) }}'">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge bg-primary-soft text-primary fw-semibold" style="font-size: 0.75rem;">{{ $inv->invoice_number }}</span>
                                 <span class="fw-bold" style="font-family: var(--fs-font-mono); font-size: 1.05rem; color: var(--fs-text-primary);">Rp {{ number_format($inv->balance_due, 0, ',', '.') }}</span>
